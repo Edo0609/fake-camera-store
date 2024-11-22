@@ -11,14 +11,14 @@
 
 <body>
 	<custom-search>
-		<dialog>
-			<div id="buscar-div">
-				<div id="buscar-top">
-					<button id="back-btn">🗙</button>
-					<p>Buscar</p>
+		<dialog class="w-96 overflow-hidden">
+			<div id="buscar-div" class="flex flex-col">
+				<div id="buscar-top" class="relative w-96 h-20 flex items-center bg-white justify-center">
+					<button id="back-btn" class="absolute right-6">🗙</button>
+					<p class="absolute w-96 flex justify-center h-20 p-2 font-bold">Buscar</p>
+					<input type="text" id="search-input" class="border-black border rounded-full mt-8 z-10 px-1">
 				</div>
-				<input type="text" id="search-input">
-				<ul id="resultados">
+				<ul id="resultados" class="w-full flex flex-col overflow-scroll h-screen">
 
 				</ul>
 			</div>
