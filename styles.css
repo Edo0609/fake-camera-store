@@ -4,5 +4,9 @@
 }
 
 .bg-secondary {
-	background-color: rgb(250 240 202);
+	background-color: transparent;
+}
+
+.bg-primary {
+	background-color: white;
 }

@@ -10,18 +10,69 @@
 </head>
 
 <body>
+	<custom-search>
+		<dialog>
+			<div id="buscar-div">
+				<div id="buscar-top">
+					<button id="back-btn">🗙</button>
+					<p>Buscar</p>
+				</div>
+				<input type="text" id="search-input">
+				<ul id="resultados">
+
+				</ul>
+			</div>
+
+			<template>
+				<li>
+					<a class="search-url" href="">
+						<div class="search-card">
+							<img src="" alt="">
+							<div class="search-text">
+								<p class="search-title"></p>
+								<p class="search-desc"></p>
+								<p class="search-price"></p>
+							</div>
+						</div>
+					</a>
+				</li>
+			</template>
+		</dialog>
+	</custom-search>
+
+	<template id="cam-template">
+		<div class="cam-div rounded-lg shadow-xl flex flex-col h-full">
+			<a href="" class="url rounded-lg flex flex-col h-full">
+				<div class="cam-img h-1/2 p-8 flex justify-center items-center">
+					<img src="" alt="camera" class="object-contain rounded-sm">
+				</div>
+				<div class="px-4 title-desc">
+					<p class="cam-title font-bold text-2xl"></p>
+					<p class="cam-desc"></p>
+				</div>
+				<div class="cam-tags mx-4 mt-2 flex justify-start gap-2 flex-wrap">
+				</div>
+				<p class="cam-rating mt-2 text-xl px-6"></p>
+				<div class="price-date flex justify-between items-end h-full mb-4 px-6">
+					<p class="price text-4xl font-bold"></p>
+					<relative-time class="date" time></relative-time>
+				</div>
+			</a>
+		</div>
+	</template>
 	<div class="flex">
 		<div id="main-content" class="w-full">
 			<header>
-				<div id="header-container" class="fixed flex justify-between h-16 w-screen bg-gray-200">
+				<div id="header-container" class=" z-30 fixed flex justify-between h-16 w-screen bg-gray-200">
 					<div id="logo" class="h-full ml-3">
 						<img src="imgs/logo-cam.png" class="h-full object-contain" alt="logo">
 					</div>
 					<div id="search-cart" class="h-full flex mr-4">
 						<div id="search" class="h-full">
-							<button class="h-full">
+							<button id="search-btn" class="h-full">
 								<div class="h-full">
-									<img src="imgs/search-svgrepo-com.svg" class="h-full object-contain p-5" alt="search">
+									<img src="imgs/search-svgrepo-com.svg" class="h-full object-contain p-5"
+										alt="search">
 								</div>
 							</button>
 						</div>
@@ -32,22 +83,41 @@
 										alt="search">
 								</div>
 							</button>
-						</div> 
+						</div>
 					</div>
 				</div>
 			</header>
-			<section class="mt-16 bg-secondary">
-				<div class="container mx-auto px-6 py-16 text-center">
-				  <h1 class="text-4xl font-bold text-gray-800 mb-4">Mejores Cámaras de la Historia</h1>
-				  <p class="text-gray-700 mb-8">Mejor calidad y Cuadros por Segundo</p>
-				  <a href="#" class="bg-primary text-white px-6 py-3 rounded-full hover:bg-blue-800">Comenzar</a>
+			<section id="hero" class="mt-16 bg-secondary h-screen w-full">
+				<div class="absolute flex flex-col w-full h-screen text-center z-10 justify-center items-center">
+					<h1 class="text-4xl font-bold text-white mb-4 w-full">Mejores Cámaras de la Historia</h1>
+					<p class="text-white mb-8">Mejor calidad y Cuadros por Segundo</p>
+					<button
+						class="bg-primary text-black px-6 py-3 w-32 rounded-full hover:bg-gray-200">Comenzar</button>
 				</div>
-			  </section>
-			  <section>
-				<div style="height: 10000px;"></div>
-			  </section>
+				<div class="h-full w-full z-9 bg-cover"
+					style="background-image: url(imgs/istockphoto-512982318-612x612.jpg); filter: blur(0.2rem) brightness(50%);">
+				</div>
+			</section>
+			<section id="catalogo" class="mt-4 w-full">
+				<div class="w-full">
+					<div id="catalogo-titulo" class="h-16 flex justify-center">
+						<h1 class="flex items-center font-bold text-3xl">Nuestro Catálogo</h1>
+					</div>
+					<div id="barra-catalogo" class="px-6 flex justify-end w-full h-16">
+						<button id="btn-categoria"
+							class="w-64 px-4 rounded-full border border-black flex justify-between items-center h-10 text-center rounded-full">
+							<p class="h-full flex items-center">Tags</p><img src="imgs/dropdown-arrow-svgrepo-com.svg"
+								alt="" class="h-full">
+						</button>
+					</div>
+					<div id="articulos">
+						<camera-viewer id="cam-grid" class="grid grid-cols-4 gap-4 mx-4" tags></camera-viewer>
+					</div>
+				</div>
+			</section>
 		</div>
 	</div>
+	<script src="script.js"></script>
 </body>
 
 </html>
