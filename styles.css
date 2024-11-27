@@ -10,3 +10,56 @@
 .bg-primary {
 	background-color: white;
 }
+
+#popover-1[popover] {
+	z-index: 1;
+    position-anchor: --anchor;
+    top: anchor(--anchor bottom);
+    left: anchor(--anchor left);
+    width: 200px;
+    font-size: 20px;
+    text-align: left;
+}
+
+#popover-cart[popover] {
+	z-index: 1;
+    position-anchor: --anchor2;
+    top: anchor(--anchor2 bottom);
+    left: calc(anchor(--anchor2 left) - 350px);
+    width: 400px;
+    font-size: 20px;
+    text-align: left;
+}
+
+.contenedor-footer {
+    height: 468px;
+}
+
+.pressed {
+    box-shadow: 0px 0px 5px 1px inset rgb(59, 59, 59);
+    background-color: lightgray;
+}
+
+.grid-replace {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+@media screen and (max-width: 1875px) and (min-width: 1000px) {
+    .grid-replace {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+@media screen and (max-width: 1400px) and (min-width: 601px) {
+    .grid-replace {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    .grid-replace {
+        grid-template-columns: 1fr;
+    }
+}

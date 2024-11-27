@@ -4,34 +4,33 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="https://cdn.tailwindcss.com"></script>
 	<title>Camera Store By Edo</title>
+	<script src="https://cdn.tailwindcss.com"></script>
 	<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 	<custom-search>
-		<dialog class="w-96 overflow-hidden">
-			<div id="buscar-div" class="flex flex-col">
-				<div id="buscar-top" class="relative w-96 h-20 flex items-center bg-white justify-center">
+		<dialog class="w-2/5">
+			<div id="buscar-div" class="flex flex-col h-full">
+				<div id="buscar-top" class="fixed w-2/5 h-20 flex items-center bg-white justify-center">
 					<button id="back-btn" class="absolute right-6">🗙</button>
-					<p class="absolute w-96 flex justify-center h-20 p-2 font-bold">Buscar</p>
+					<p class="absolute w-2/5 flex justify-center h-20 p-2 font-bold">Buscar</p>
 					<input type="text" id="search-input" class="border-black border rounded-full mt-8 z-10 px-1">
 				</div>
-				<ul id="resultados" class="w-full flex flex-col overflow-scroll h-screen">
+				<ul id="resultados" class="w-full flex flex-col h-full pt-20">
 
 				</ul>
 			</div>
 
 			<template>
-				<li>
+				<li class="rounded-lg shadow-xl m-6 hover:bg-gray-200">
 					<a class="search-url" href="">
-						<div class="search-card">
-							<img src="" alt="">
-							<div class="search-text">
-								<p class="search-title"></p>
-								<p class="search-desc"></p>
-								<p class="search-price"></p>
+						<div class="search-card flex justify-between items-center w-full h-full px-6">
+							<img class="w-1/3 object-contain p-5 rounded-lg" src="" alt="">
+							<div class="flex flex-col items-center search-text w-2/5 text-wrap justify-around h-full">
+								<p class="search-title font-bold text-xl"></p>
+								<p class="search-price text-xl text-lime-600"></p>
 							</div>
 						</div>
 					</a>
@@ -41,25 +40,45 @@
 	</custom-search>
 
 	<template id="cam-template">
-		<div class="cam-div rounded-lg shadow-xl flex flex-col h-full">
-			<a href="" class="url rounded-lg flex flex-col h-full">
-				<div class="cam-img h-1/2 p-8 flex justify-center items-center">
-					<img src="" alt="camera" class="object-contain rounded-sm">
+			<div class="cam-div rounded-lg shadow-xl flex flex-col h-full items-center">
+				<a href="" class="url rounded-lg flex flex-col h-full z-10">
+					<div class="cam-img h-1/2 p-8 flex justify-center items-center">
+						<img src="" alt="camera" class="object-contain rounded-sm h-full object-scale-down max-w-96">
+					</div>
+					<div class="px-4 title-desc">
+						<p class="cam-title font-bold text-2xl"></p>
+						<p class="cam-desc"></p>
+					</div>
+					<div class="cam-tags mx-4 mt-2 flex justify-start gap-2 flex-wrap">
+					</div>
+					<p class="cam-rating mt-2 text-xl px-6"></p>
+					<div class="price-text flex justify-between items-end w-full h-full px-3 pb-14">
+						<p class="price text-4xl font-bold"></p>
+						<relative-time class="date" time></relative-time>
+					</div>
+				</a>
+				<div class="buy flex items-center w-2/3 h-32 mx-4 z-30">
+					<button class="add-cart rounded-full h-14 w-full bg-gray-200 hover:bg-gray-300">Añadir al carrito</button>
 				</div>
-				<div class="px-4 title-desc">
-					<p class="cam-title font-bold text-2xl"></p>
-					<p class="cam-desc"></p>
-				</div>
-				<div class="cam-tags mx-4 mt-2 flex justify-start gap-2 flex-wrap">
-				</div>
-				<p class="cam-rating mt-2 text-xl px-6"></p>
-				<div class="price-date flex justify-between items-end h-full mb-4 px-6">
-					<p class="price text-4xl font-bold"></p>
-					<relative-time class="date" time></relative-time>
+			</div>
+	</template>
+
+	
+	<template id="cart-template">
+		<li class="p-2 w-full border-black border-b my-4">
+			<button class="remove absolute t-0">🗙</button>
+			<a href="">
+				<div class="flex justify-between items-center w-full">
+					<img src="" alt="" class="p-1 mx-4 ms-5 w-1/4 object-scale-down">
+					<div class="flex flex-col justify-between items-center w-1/2">
+						<p class="title w-full font-bold"></p>
+						<p class="price w-full text-lime-600"></p>
+					</div>
 				</div>
 			</a>
-		</div>
+		</li>
 	</template>
+
 	<div class="flex">
 		<div id="main-content" class="w-full">
 			<header>
@@ -77,22 +96,33 @@
 							</button>
 						</div>
 						<div id="cart" class="h-full">
-							<button class="h-full">
+							<button class="h-full" popovertarget="popover-cart" style="anchor-name: --anchor2;">
 								<div class="h-full">
 									<img src="imgs/cart-shopping-svgrepo-com.svg" class="h-full object-contain p-5"
 										alt="search">
 								</div>
 							</button>
+							<ul id="popover-cart" class="fixed bg-white border border-gray-200 rounded-lg p-1 w-96 h-96"
+							popover>
+							<div id="items" class="w-full">
+
+							</div>
+							<div id="total-compra" class="b-0 h-16 bg-white flex justify-between items-center">
+								<p id="total" class="font-bold"></p>
+								<button id="comprar" class="bg-lime-500 p-3 rounded-sm">Comprar</button>
+							</div>
+						</ul>
 						</div>
 					</div>
 				</div>
 			</header>
+
 			<section id="hero" class="mt-16 bg-secondary h-screen w-full">
 				<div class="absolute flex flex-col w-full h-screen text-center z-10 justify-center items-center">
-					<h1 class="text-4xl font-bold text-white mb-4 w-full">Mejores Cámaras de la Historia</h1>
-					<p class="text-white mb-8">Mejor calidad y Cuadros por Segundo</p>
+					<h1 class="text-4xl font-bold text-white mb-4 w-full">Conoce las mejores cámaras del mercado</h1>
+					<p class="text-white mb-8">Con calidad superior y una amplia gama de precios y modelos</p>
 					<button
-						class="bg-primary text-black px-6 py-3 w-32 rounded-full hover:bg-gray-200">Comenzar</button>
+						class="bg-primary text-black px-6 py-3 w-32 rounded-full hover:bg-gray-200">Explora</button>
 				</div>
 				<div class="h-full w-full z-9 bg-cover"
 					style="background-image: url(imgs/istockphoto-512982318-612x612.jpg); filter: blur(0.2rem) brightness(50%);">
@@ -103,15 +133,29 @@
 					<div id="catalogo-titulo" class="h-16 flex justify-center">
 						<h1 class="flex items-center font-bold text-3xl">Nuestro Catálogo</h1>
 					</div>
-					<div id="barra-catalogo" class="px-6 flex justify-end w-full h-16">
-						<button id="btn-categoria"
-							class="w-64 px-4 rounded-full border border-black flex justify-between items-center h-10 text-center rounded-full">
-							<p class="h-full flex items-center">Tags</p><img src="imgs/dropdown-arrow-svgrepo-com.svg"
-								alt="" class="h-full">
+					<div id="barra-catalogo" class="px-6 flex justify-between w-full h-16 relative">
+						<div id="btn-grid-flex"
+							class="w-40 mx-4 rounded-lg border border-black flex justify-center items-center h-10 text-center rounded-full">
+							<button id="btn-grid" class="w-1/2 h-full rounded-s-lg pressed">Grid</button>
+							<button id="btn-flex" class="w-1/2 h-full rounded-e-lg">Flex</button>
+						</div>
+						<button id="btn-tags"
+							class="w-64 px-4 rounded-full border border-black flex justify-between items-center h-10 text-center rounded-full"
+							popovertarget="popover-1" style="anchor-name: --anchor;">
+							<p class="h-full flex items-center">Tags</p>
+							<img src="imgs/dropdown-arrow-svgrepo-com.svg" alt="" class="h-full"
+								style="transition: 0.2s;">
 						</button>
+						<ul id="popover-1" class="absolute bg-white border border-gray-200 rounded-lg p-1 w-64 h-96"
+							popover>
+							<div class="flex flex-col justify-around">
+								<li class="tags h-10 flex items-center px-4 hover:bg-gray-200 text-sm cursor-pointer rounded-lg">None</li>
+							</div>
+						</ul>
 					</div>
 					<div id="articulos">
-						<camera-viewer id="cam-grid" class="grid grid-cols-4 gap-4 mx-4" tags></camera-viewer>
+						<camera-viewer id="cam-cards" class="grid gap-4 mx-4 justify-around grid-replace"
+							tags></camera-viewer>
 					</div>
 				</div>
 			</section>
