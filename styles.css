@@ -21,6 +21,7 @@
     text-align: left;
 }
 
+
 #popover-cart[popover] {
 	z-index: 1;
     position-anchor: --anchor2;
@@ -29,10 +30,6 @@
     width: 400px;
     font-size: 20px;
     text-align: left;
-}
-
-.contenedor-footer {
-    height: 468px;
 }
 
 .pressed {
@@ -62,4 +59,12 @@
     .grid-replace {
         grid-template-columns: 1fr;
     }
+}
+
+@media screen and (max-width: 900px) {
+	#camera-info {
+		flex-direction: column;
+		align-items: center;
+		height: 1000px;
+	}
 }
